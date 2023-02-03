@@ -198,3 +198,19 @@ add_executable(client ${CLIENT_SRC})
 
 target_link_libraries(client workflow)
 
+if(WIN32)
+    # get_cmake_property(_variableNames VARIABLES)
+    # list(SORT _variableNames)
+
+    # foreach(_variableName ${_variableNames})
+    # message(STATUS "${_variableName}=${${_variableName}}")
+    # endforeach()
+    add_custom_target(genexdebug COMMAND ${CMAKE_COMMAND} -E echo "##LINK_DIRECTORIES: $<TARGET_PROPERTY:main,LINK_DIRECTORIES>")
+    add_custom_command(TARGET main POST_BUILD
+        COMMAND ${CMAKE_COMMAND}
+        -DTARGET_NAME=$<TARGET_FILE:main>
+        -DTARGET_PATH=$<TARGET_FILE_DIR:main>
+        -DDLL_SEARCH_PATH_LIST="$<TARGET_PROPERTY:main,LINK_DIRECTORIES>"
+        -DIS_DEBUG=OFF
+        -DCONFIG_NAME=$<CONFIG> -P ${CMAKE_SOURCE_DIR}/copy_dlls.cmake)
+endif()
