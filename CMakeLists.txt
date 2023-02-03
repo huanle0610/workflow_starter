@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.6)
 
 project(workflow_starter)
 
+# generates a compile_commands.json
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # --- compile workflow --- #
 # macro definition
 if (WIN32)
