@@ -217,3 +217,19 @@ if(WIN32)
         -DIS_DEBUG=OFF
         -DCONFIG_NAME=$<CONFIG> -P ${CMAKE_SOURCE_DIR}/copy_dlls.cmake)
 endif()
+
+
+add_executable(wget-demo src/wget.cc)
+target_link_libraries(wget-demo workflow)
+
+add_executable(wget-redis-demo src/wget_redis.cc)
+target_link_libraries(wget-redis-demo workflow)
+
+add_executable(http-echo-server-demo src/http_echo_server.cc)
+target_link_libraries(http-echo-server-demo workflow)
+
+add_executable(diy_server src/diy/diy_server.cc  src/diy/diy_message.cc)
+target_link_libraries(diy_server workflow)
+
+add_executable(diy_client src/diy/diy_client.cc  src/diy/diy_message.cc)
+target_link_libraries(diy_client workflow)

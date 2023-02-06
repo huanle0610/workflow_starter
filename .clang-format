@@ -1,0 +1,18 @@
+---
+### Init from:
+### clang-format -style=llvm -dump-config > .clang-format
+### !!THIS FILE MUST UTF-8!!
+### OR WILL GOT: [error: Got empty plain scalar]
+Language:        Cpp
+BasedOnStyle: LLVM
+UseTab: Never
+IndentWidth: 4
+TabWidth: 4
+BreakBeforeBraces: Allman
+AllowShortIfStatementsOnASingleLine: false
+IndentCaseLabels: false
+ColumnLimit: 0
+AccessModifierOffset: -4
+NamespaceIndentation: All
+FixNamespaceComments: false
+SortIncludes: false
